@@ -31,3 +31,87 @@ Main Python environment and package versions:
 
 ## PRINCIPAL ARCHITECTURE OF THE TOOL 
 
+## ⚙️ Computational Framework
+
+The computational engine of **LCA4DH** has been fully implemented in **Brightway2.5**, leveraging its node–edge architecture to perform Life Cycle Assessment (LCA) of District Heating and Cooling Networks (DHCNs).  
+Each **node** represents a specific process unit or component (e.g., boiler, CHP unit, heat pump, thermal storage), while **edges** define material, energy, and emission exchanges among them. This structure allows the model to compute life cycle inventories (LCI) and impacts dynamically, following the physical and logical connections of the analyzed system.
+
+The engine is composed of three interconnected sections:
+
+1. **Input Model**  
+2. **Computational Model**  
+3. **Output Model**
+
+---
+
+### 🧩 Input Model
+
+The **input model** defines the structure and workflow for incorporating both user-supplied and external datasets.  
+Users provide **activity data**, such as operational parameters and technical specifications, via a structured **Excel interface**.  
+
+This file includes:
+- An **introductory sheet**, describing the general configuration of the DHCN — including energy system typologies, network parameters, and auxiliary subsystems;  
+- A series of **automatically generated sheets**, one for each technology, where the number of rows corresponds to the number of installed units (e.g., multiple boilers or CHP units).  
+
+> Example:  
+> A DHCN composed of four natural gas boilers, one CHP unit, and one cooling tower will generate three sheets — one with four rows (boilers), and one each for the CHP and cooling tower.
+
+If **primary data** from the DHCN operator are unavailable, **secondary data** sourced from literature are used as reliable substitutes.
+
+External datasets include:
+- **Emission factors** from **ecoinvent 3.11 EN 15804** (Wernet et al., 2016);  
+- **Characterization factors** from the **Environmental Footprint (EF 3.1)** method (Fazio et al., 2018);  
+- **End-of-Life (EoL)** coefficients for materials and processes.
+
+To optimize computation speed and ensure data integrity, emission factors are **pre-structured** in a *closed-structure* Excel or `.pkl` file.  
+A dedicated **Python preprocessor**, operating independently from the Brightway engine, extracts only relevant data from the full ecoinvent database. This process:
+- Filters out redundant or irrelevant flows;  
+- Normalizes data per **functional unit (fU)**;  
+- Stores only the required indicators from the chosen characterization method.  
+
+Similarly, the **EoL parameters** are preprocessed and stored in a separate file (`Parametri_EoL.xlsx`), containing coefficients for recycling, incineration, and landfill fractions. These can be manually adjusted by the user when more reliable primary data become available.
+
+---
+
+### 🔗 Computational Model
+
+The **computational model** represents the core of the engine.  
+It operates through a network of **interconnected Brightway activities** (nodes) and exchanges (edges), forming a graph that mirrors the physical and operational structure of the DHCN.
+
+Each activity corresponds to a life cycle module or process stage, consistent with **EN 15804:2019** (CEN, 2019). The relationships defined in previous project phases are implemented to calculate impacts for each component and phase of the network.
+
+The computation relies on the interaction between two core matrices:
+
+- **A′ Matrix (Activity Data Matrix)**:  
+  Contains rows representing life cycle modules (A1–A5, B, C, D) and columns corresponding to products or environmental flows (e.g., *kg of steel per fU*, *CO₂ emissions per fU*).  
+- **Q′ Matrix (Characterization Matrix)**:  
+  Includes emission and characterization factors derived from **ecoinvent 3.11 EN 15804** and the **EF 3.1** method.
+
+By multiplying the A′ and Q′ matrices, the model generates the **impact vector h′**, representing environmental scores per functional unit (1 kWh of delivered thermal energy).  
+These calculations are executed automatically through Brightway’s internal methods, where each node can retrieve and apply emission and characterization data dynamically, ensuring consistency and reproducibility across all modules.
+
+Each module (e.g., *Boiler*, *Heat Pump*, *CHP*, *Thermal Storage*) operates as an independent Brightway project, but all communicate through a **central orchestrating node**, which:
+- Aggregates results from all components;  
+- Manages exchanges among subsystems;  
+- Normalizes results to the **functional unit**;  
+- Ensures correct data transfer among life cycle modules.
+
+This architecture supports modular analyses — each component can be assessed independently or integrated into a full system simulation — and allows quick recalculations if input data or parameters are updated.
+
+---
+
+### 📊 Output Model
+
+The **output model** consolidates and organizes results derived from the Brightway computational graph.  
+While detailed output handling is described in a separate section, the computational engine is designed to provide flexible aggregation of results both **by technology** (e.g., boilers, heat pumps, CHP) and **by life cycle stage** (A–D).  
+
+Outputs can be expressed per functional unit or as relative contributions, enabling users to identify critical components and guide system optimization.
+
+---
+
+### 🧠 Summary
+
+The **Brightway2.5-based architecture** ensures a transparent, modular, and reproducible computational workflow.  
+By integrating **structured Excel data**, **ecoinvent 3.11 EN 15804**, and the **EF 3.1** characterization method, the LCA4DH engine provides a scalable platform for evaluating the environmental performance of District Heating and Cooling Networks.
+
+> For further information on input data structures, calibration methodologies, and datasets, please refer to the related scientific publications.
