@@ -30,11 +30,15 @@ Main Python environment and package versions:
 | ecoinvent licence | ecoinvent 3.11 EN 15804+A2 |
 
 ## PRINCIPAL ARCHITECTURE OF THE TOOL 
+## Computational framework
+the computational structure developed for the tool in this research will be simplified when it is compared with what was explained by Beccali, Cellura, and Di Matteo (1997), Heijungs and Suh (2002), Ardente, Beccali, and Cellura (2004). The engine imports an emission/characterization factors matrix (Q'). As noted, it consists of rows representing products (District Heating and Cooling components components) and elementary
+flows and columns representing the impact category for each process and environmental intervention. The matrix was then multiplied by an A' matrix to obtain the scores (per functional unit – fU, equal to 1 kWh of heating or cooling provided by the network) for the heating or cooling supplied by the network analyzed. Matrix A' comprises rows representing life cycle Modules and columns representing products and environmental flows (e.g., kg of steel per fU, CO₂ emission for combustion of natural gas per fU, etc.). Figure 3 schematizes the two matrices, A' and Q',
+showing the matrix h' with the scores, represented by Modules in rows and impact categories in columns.
 
-## ⚙️ Computational Framework
+## ⚙️ Architectural Framework
 
 The computational engine of **LCA4DH** has been fully implemented in **Brightway2.5**, leveraging its node–edge architecture to perform Life Cycle Assessment (LCA) of District Heating and Cooling Networks (DHCNs).  
-Each **node** represents a specific process unit or component (e.g., boiler, CHP unit, heat pump, thermal storage), while **edges** define material, energy, and emission exchanges among them. This structure allows the model to compute life cycle inventories (LCI) and impacts dynamically, following the physical and logical connections of the analyzed system.
+Each **node** represents the specific module describing the life cycle of each specific energy system or infrastructure (e.g., boiler, Combined Heat and Power unit, heat pump, thermal storage), while **edges** define material, energy, and emission exchanges among them. This structure allows the model to compute life cycle inventories (LCI) and impacts dynamically, following the physical and logical connections of the analyzed system.
 
 The engine is composed of three interconnected sections:
 
@@ -80,17 +84,10 @@ It operates through a network of **interconnected Brightway activities** (nodes)
 
 Each activity corresponds to a life cycle module or process stage, consistent with **EN 15804:2019** (CEN, 2019). The relationships defined in previous project phases are implemented to calculate impacts for each component and phase of the network.
 
-The computation relies on the interaction between two core matrices:
 
-- **A′ Matrix (Activity Data Matrix)**:  
-  Contains rows representing life cycle modules (A1–A5, B, C, D) and columns corresponding to products or environmental flows (e.g., *kg of steel per fU*, *CO₂ emissions per fU*).  
-- **Q′ Matrix (Characterization Matrix)**:  
-  Includes emission and characterization factors derived from **ecoinvent 3.11 EN 15804** and the **EF 3.1** method.
-
-By multiplying the A′ and Q′ matrices, the model generates the **impact vector h′**, representing environmental scores per functional unit (1 kWh of delivered thermal energy).  
 These calculations are executed automatically through Brightway’s internal methods, where each node can retrieve and apply emission and characterization data dynamically, ensuring consistency and reproducibility across all modules.
 
-Each module (e.g., *Boiler*, *Heat Pump*, *CHP*, *Thermal Storage*) operates as an independent Brightway project, but all communicate through a **central orchestrating node**, which:
+Each module (e.g., *Boiler*, *Heat Pump*, *CHP*, *Thermal Storage*) operates as an independent Brightway script, but all communicate through a **central orchestrating script**, which:
 - Aggregates results from all components;  
 - Manages exchanges among subsystems;  
 - Normalizes results to the **functional unit**;  
@@ -100,11 +97,10 @@ This architecture supports modular analyses — each component can be assessed i
 
 ---
 
-### 📊 Output Model
+### RESULTS AND OUTPUT
 
 The **output model** consolidates and organizes results derived from the Brightway computational graph.  
-While detailed output handling is described in a separate section, the computational engine is designed to provide flexible aggregation of results both **by technology** (e.g., boilers, heat pumps, CHP) and **by life cycle stage** (A–D).  
-
+While detailed output handling is described in a separate section, the computational engine is designed to provide flexible aggregation of results both **by technology** (e.g., boilers, heat pumps, CHP) and **by life cycle stage** (A–D). 
 Outputs can be expressed per functional unit or as relative contributions, enabling users to identify critical components and guide system optimization.
 
 ---
