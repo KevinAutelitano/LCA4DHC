@@ -137,9 +137,9 @@ Follow the official instructions provided here:
 Important:
 During installation, the authors renamed the databases as follows:
 
-ei = ecoinvent-3.11-EN15804
+- ei = ecoinvent-3.11-EN15804
 
-bio = ecoinvent-3.11-biosphere
+- bio = ecoinvent-3.11-biosphere
 
 For the tool to work properly, make sure to update these names in the scripts according to the database names you chose during installation.
 
@@ -150,27 +150,44 @@ Users are free to import the package into a different Brightway project; however
 The tool must be executed in the same Brightway project where the Ecoinvent libraries have been imported.
 
 🗂 Folder Path Configuration
-
 To ensure correct execution, some folder paths must be updated manually:
-
 Open the script Libraries.ipynb.
-
 Modify the following variables according to your local setup:
-
 ENERGYSYSTEM_PATH
-
 ROOT_PATH
-
 base_path
-
 These paths must point to the correct directories within your local environment.
+These steps are required only the first time the tool is executed.
+Once the tool has been successfully run, you do not need to repeat them.
+
+## EXECUTION
+
+📘 Excel File Compilation
+
+The input data describing the district heating network must be entered in the dedicated Excel file named CompilatoreBackup.xlsx.
+
+This file contains a main sheet called generatorsConfig:
+
+The first section collects general information about the network.
+
+The energy systems section refers to the general inventory of the systems included in the network.
+
+Once the required information has been filled in, clicking the Start button activates a macro that automatically generates additional Excel sheets corresponding to each specific energy system.
+
+Note:
+Only the sheets associated with the selected energy systems are activated.
+Systems for which the user has set the number of units to 0 will not be activated.
+
+Each sheet related to an energy system requires specific input data for that particular machine or technology.
+A reference table is provided below (or in the documentation) listing all required inputs and detailed instructions for completing each section.
+
+All sheets must be fully completed before running the tool.
 
 ▶️ Running the Environment
-
 Once Miniconda, Brightway, and the required libraries are installed:
-
 Activate your Brightway environment within Miniconda.
-
 Open Jupyter Lab and navigate to the provided scripts.
+Launch the script named RUN.ipynb to initialize the databases and verify the configuration.
 
-Launch the script named dabase.ipynb (or equivalent) to initialize the databases and verify the configuration.
+
+
