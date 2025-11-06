@@ -111,3 +111,66 @@ The **Brightway2.5-based architecture** ensures a transparent, modular, and repr
 By integrating **structured Excel data**, **ecoinvent 3.11 EN 15804**, and the **EF 3.1** characterization method, the LCA4DH engine provides a scalable platform for evaluating the environmental performance of District Heating and Cooling Networks.
 
 > For further information on input data structures, calibration methodologies, and datasets, please refer to the related scientific publications.
+
+🔧 Backup Operations and Setup Instructions
+
+Before running any simulations, download the entire package without modifying the position or hierarchy of its contents.
+
+1. Required Software
+
+To ensure correct functionality of the computational engine, please install the following tools:
+
+Miniconda
+
+Brightway 2.5
+
+Jupyter Lab
+
+It is strongly recommended to follow the official Brightway installation guide linked above.
+
+2. Importing Ecoinvent Databases
+
+You must also install the Ecoinvent biosphere and Ecoinvent 3.11 EN15804 databases.
+Follow the official instructions provided here:
+👉 Importing Ecoinvent into Brightway
+
+Important:
+During installation, the authors renamed the databases as follows:
+
+ei = ecoinvent-3.11-EN15804
+
+bio = ecoinvent-3.11-biosphere
+
+For the tool to work properly, make sure to update these names in the scripts according to the database names you chose during installation.
+
+3. Project Configuration
+
+The tool is designed to run within the LCA4DHC project, which has been preconfigured by the authors.
+Users are free to import the package into a different Brightway project; however, for beginners, it is strongly advised not to modify the project structure or its contents.
+The tool must be executed in the same Brightway project where the Ecoinvent libraries have been imported.
+
+🗂 Folder Path Configuration
+
+To ensure correct execution, some folder paths must be updated manually:
+
+Open the script Libraries.ipynb.
+
+Modify the following variables according to your local setup:
+
+ENERGYSYSTEM_PATH
+
+ROOT_PATH
+
+base_path
+
+These paths must point to the correct directories within your local environment.
+
+▶️ Running the Environment
+
+Once Miniconda, Brightway, and the required libraries are installed:
+
+Activate your Brightway environment within Miniconda.
+
+Open Jupyter Lab and navigate to the provided scripts.
+
+Launch the script named dabase.ipynb (or equivalent) to initialize the databases and verify the configuration.
