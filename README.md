@@ -183,11 +183,187 @@ A reference table is provided below (or in the documentation) listing all requir
 
 All sheets must be fully completed before running the tool.
 
+| **General information / Energy systems** | **Specific data input** | **Data entry information** |
+|------------------------------------------|--------------------------|-----------------------------|
+| **General data input** |  |  |
+| General information | Reference scenario year | Choose among the options |
+|  | District Heating and Cooling typology | Choose among the options |
+|  | Service life [Year] | Input value |
+|  | Diameter of the pipes [m] | Choose among the options - Insert value |
+|  | Length pipes [km] | Input value |
+|  | Pipe typology | Choose among the options - Insert value |
+|  | Supply primary circuit Temperature [°C] | Input value |
+|  | Return primary circuit Temperature [°C] | Input value |
+|  | Reference External Temperature [°C] | Input value |
+|  | Total energy erogated [MWh] | Input value |
+| LCA approach | Life Cycle Assessment Multifunctionality approach | Choose among the options |
+| End user information | Number of users | Input value |
+|  | Number of users Domestic Hot Water | Input value |
+|  | Terminal typology | Input value |
+| Electricity input generation | National Grid (between 0 and 1) | Input value |
+|  | Photovoltaic system (between 0 and 1) | Input value |
+|  | Renewable Energy Certificates from Photovoltaic electricity production (between 0 and 1) | Input value |
+|  | Renewable Energy Certificates from Hydroelectric electricity production (between 0 and 1) | Input value |
+|  | Renewable Energy Certificates from Heolic electricity production (between 0 and 1) | Input value |
+| Energy systems | Number of appliances | Input value |
+| **Specific data related to energy systems** |  |  |
+| Boiler | Power [kW] | Input value |
+|  | Energy produced [kWh/year] | Input value |
+|  | Efficiency (between 0 and 1) | Input value |
+|  | Energy source (Gas-blend, LPG, Biomethane, Hydrogen) | Choose among the options |
+| Fuel oil boiler / Biomass boiler | Power [kW] | Input value |
+|  | Energy produced [kWh/year] | Input value |
+|  | Efficiency (between 0 and 1) | Input value |
+| CHP – Internal Combustion Engine / Turbogas / Combined Cycle | Power [kW] | Input value |
+|  | Electrical efficiency based on LHV (between 0 and 1) | Input value |
+|  | Heat efficiency based on LHV (between 0 and 1) | Input value |
+|  | Electric energy produced in a year (exported and consumed) [kWh/year] | Input value |
+|  | Thermal energy produced used [kWh/year] | Input value |
+|  | Supply temperature [°C] | Input value |
+|  | Return temperature [°C] | Input value |
+|  | Energy input from gas-blend [kWh/year] | Input value |
+|  | Energy input from biogas [kWh/year] | Input value |
+|  | Energy input from hydrogen [kWh/year] | Input value |
+| CHP – Organic Rankine Cycle | Power [kW] | Input value |
+|  | Electrical efficiency based on LHV (between 0 and 1) | Input value |
+|  | Heat efficiency based on LHV (between 0 and 1) | Input value |
+|  | Electric energy produced in a year (exported and consumed) [kWh/year] | Input value |
+|  | Thermal energy produced used [kWh/year] | Input value |
+|  | Biomass used as a waste ['yes' or 'no'] | Choose among the options |
+|  | Supply temperature [°C] | Input value |
+|  | Return temperature [°C] | Input value |
+| CHP – Waste-to-Energy | Power [kW] | Input value |
+|  | Electrical efficiency based on LHV (between 0 and 1) | Input value |
+|  | Heat efficiency based on LHV (between 0 and 1) | Input value |
+|  | Lower Heating Value Biowaste [kWh/kg of waste] | Input value |
+|  | Lower Heating Value non Biowaste [kWh/kg of waste] | Input value |
+|  | Electric energy produced in a year (exported and consumed) [kWh/year] | Input value |
+|  | Thermal energy produced in a year [kWh/year] | Input value |
+|  | Amount of biowaste burned in a year [ton/year] | Input value |
+|  | Amount of non-biowaste burned in a year [ton/year] | Input value |
+|  | Supply temperature [°C] | Input value |
+|  | Return temperature [°C] | Input value |
+| Electric Heat Pump | Cold source (Groundwater, Surface water, Industrial waste water, Air) | Choose among the options |
+|  | Power [kW] | Input value |
+|  | Energy produced [kWh/year] | Input value |
+|  | SCOP | Input value |
+|  | Energy input from national grid [kWh/year] | Input value |
+|  | Energy input from Photovoltaic system [kWh/year] | Input value |
+|  | Energy input from CHP-Internal Combustion Engine [kWh/year] | Input value |
+|  | Energy input from CHP-Combined cycle [kWh/year] | Input value |
+|  | Energy input from CHP-Gas Turbine [kWh/year] | Input value |
+|  | Energy input from CHP-Waste-to-Energy [kWh/year] | Input value |
+|  | Energy input from CHP-Organic Rankine Cycle [kWh/year] | Input value |
+| Gas Engine Heat Pump | Power [kW] | Input value |
+|  | Energy produced [kWh/year] | Input value |
+|  | SGUE | Input value |
+| Geothermal Plant | Power [kW] | Input value |
+|  | Thermal energy produced [kWh/year] | Input value |
+|  | Energy input vapour [kWh/year] | Input value |
+|  | Supply temperature vapour [°C] | Input value |
+|  | Return temperature vapour [°C] | Input value |
+| Solar Thermal System | Power [kW] | Input value |
+|  | Producibility [kWh/year] | Input value |
+|  | Location | Choose among the options |
+| Concrete / Steel Thermal Storage | Storage [m³] | Input value |
+|  | Energy stored [kWh/year] | Input value |
+| Heat Recovery | Power [kW] | Input value |
+|  | Thermal energy recovered [kWh/year] | Input value |
+| Cooling – Cooling Tower / Absorption Chiller | Power [kW] | Input value |
+|  | Electric energy absorbed [kWh/year] | Input value |
+|  | Energy produced [kWh/year] | Input value |
+|  | Efficiency (between 0 and 1) | Input value |
+
+
 ▶️ Running the Environment
 Once Miniconda, Brightway, and the required libraries are installed:
 Activate your Brightway environment within Miniconda.
 Open Jupyter Lab and navigate to the provided scripts.
 Launch the script named RUN.ipynb to initialize the databases and verify the configuration.
+
+## 🧑‍🔬 Authors and Contacts
+
+**Kevin Autelitano**  
+*Politecnico di Milano*  
+📧 kevin.autelitano@polimi.it  
+
+**Jacopo Famiglietti**  
+*Politecnico di Milano*  
+📧 jacopo.famiglietti@polimi.it  
+
+
+---
+
+## ⚖️ License
+
+This tool is distributed under the **Apache License, Version 2.0 (January 2004)**.  
+You may not use this software except in compliance with the License.  
+
+A copy of the License is available at:  
+[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)  
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an **"AS IS" BASIS**, without warranties or conditions of any kind, either express or implied.  
+See the License for the specific language governing permissions and limitations under the License.
+
+---
+
+## 🙏 Acknowledgements
+
+The authors would like to thank **ReLab Laboratory** for the technical support provided in the development of this tool and the **NEST Foundation** for their collaboration.
+
+This project has been funded under the **National Recovery and Resilience Plan (NRRP)**, Mission 4 Component 2 Investment 1.3 – *Call for tender No. 1561 of 11.10.2022* by the *Italian Ministry of University and Research (MUR)*; funded by the **European Union – NextGenerationEU**.
+
+**Project details:**  
+Project code: *PE0000021*  
+Concession Decree: *No. 1561 of 11.10.2022*, issued by *Ministero dell’Università e della Ricerca (MUR)*  
+CUP: *D43C2200309001*  
+According to Attachment E of Decree No. 1561/2022  
+**Project title:** *Network 4 Energy Sustainable Transition – NEST*
+
+---
+## 📖 How to Cite
+
+If you use this tool, please cite it as:
+
+> Autelitano, K., & Famiglietti, J. (2025). *LCA Tool for District Heating Networks*. Zenodo. https://doi.org/10.5281/zenodo.xxxxxx
+
+## 📚 References
+
+Autelitano, K., Famiglietti, J., Aprile, M., Motta, M. (2024). *Towards Life Cycle Assessment for the Environmental Evaluation of District Heating and Cooling: A Critical Review.* Standards, 102–132.
+
+Autelitano, K., Famiglietti, J., Toppi, T., Motta, M. (2023). *Empirical power-law relationships for the Life Cycle Assessment of heat pump units.* Clean. Environ. Syst., 10, 100135.  
+[https://doi.org/10.1016/j.cesys.2023.100135](https://doi.org/10.1016/j.cesys.2023.100135)
+
+Bartolozzi, I., Rizzi, F., Frey, M. (2017). *Are district heating systems and renewable energy sources always an environmental win-win solution? A life cycle assessment case study in Tuscany, Italy.* Renew. Sustain. Energy Rev., 80, 408–420.  
+[https://doi.org/10.1016/j.rser.2017.05.231](https://doi.org/10.1016/j.rser.2017.05.231)
+
+CEN (2017). *EN 15316-4-5: Energy performance of buildings – Method for calculation of system energy requirements and system efficiencies – Part 4-5: District heating and cooling.* Bruxelles.
+
+Famiglietti, J., Gerevini, L., Spirito, G., Pozzi, M., Dénarié, A., Scoccia, R., Motta, M. (2021). *Environmental Life Cycle Assessment scenarios for a district heating network: An Italian case study.* Energy Reports, 7, 368–379.  
+[https://doi.org/10.1016/j.egyr.2021.08.094](https://doi.org/10.1016/j.egyr.2021.08.094)
+
+Famiglietti, J., Toosi, H.A., Dénarié, A., Motta, M. (2022). *Developing a new data-driven LCA tool at the urban scale: The case of the energy performance of the building sector.* Energy Convers. Manag., 256.  
+[https://doi.org/10.1016/j.enconman.2022.115389](https://doi.org/10.1016/j.enconman.2022.115389)
+
+Fazio, S., Castellani, V., Sala, S., Schau, E.M., Secchi, M., Zampori, L., Diaconu, E. (2018). *Supporting information to the characterisation factors of recommended EF Life Cycle Impact Assessment method.* EUR 28888 EN, European Commission, Ispra.  
+[https://doi.org/10.2760/671368](https://doi.org/10.2760/671368)
+
+Heck, T. (2012). *LCI Analysis of Heat Pumps.* Ecoinvent report.
+
+International Organization for Standardization (2021). *UNI EN ISO 14044:2021 - Environmental management - Life cycle assessment - Requirements and guidelines.*
+
+ISTAT (2024). *Demo - Demografia in cifre.*  
+[https://www.demo.istat.it](https://www.demo.istat.it) (accessed 2025-02-01).
+
+Pizzol, M. (2019). *Deterministic and stochastic carbon footprint of intermodal ferry and truck freight transport across Scandinavian routes.* J. Clean. Prod., 224, 626–636.  
+[https://doi.org/10.1016/j.jclepro.2019.03.270](https://doi.org/10.1016/j.jclepro.2019.03.270)
+
+Vauchez, M., Famiglietti, J., Autelitano, K., Colombert, M., Scoccia, R., Motta, M. (2023). *Life Cycle Assessment of District Heating Infrastructures: A Comparison of Pipe Typologies in France.* Energies, 16, 1–23.  
+[https://doi.org/10.3390/en16093912](https://doi.org/10.3390/en16093912)
+
+Wernet, G., Bauer, C., Steubing, B., Reinhard, J., Moreno-Ruiz, E., Weidema, B. (2016). *The Ecoinvent database version 3 (Part I): Overview and methodology.* Int. J. Life Cycle Assess., 21, 1218–1230.
+
+---
 
 
 
