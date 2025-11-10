@@ -144,9 +144,9 @@ Before running any simulations, download the entire package without modifying th
 
 To ensure correct functionality of the computational engine, please install the following tools:
 
-- Miniconda  
-- Brightway 2.5  
-- Jupyter Lab  
+- [Miniconda](https://docs.brightway.dev/en/latest/content/installation/index.html)
+- [Brightway 2.5](https://docs.brightway.dev/en/latest/content/installation/index.html)
+- [Jupyter Lab](https://jupyter.org/install) 
 
 It is strongly recommended to follow the official Brightway installation guide linked above.
 
