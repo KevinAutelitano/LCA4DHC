@@ -1,24 +1,23 @@
-# LCA4DH
-### A Life Cycle Assessment data-driven tool for the evaluation of district heating and cooling networks
+### LCA4DH
+A Life Cycle Assessment data-driven tool for the evaluation of district heating and cooling networks
 
-**“Measuring today, designing a sustainable heat for tomorrow.”**
+*“Measuring today, designing a sustainable heat for tomorrow.”*
 
 ## Table of Contents
-1. [Synthetic Description](#synthetic-description)
-2. [Installation and Prerequisites](#installation-and-prerequisites)
-3. [Principal Architecture of the Tool](#principal-architecture-of-the-tool)
-   - [Computational Framework](#computational-framework)
-   - [Architectural Framework](#architectural-framework)
-     - [Input Model](#input-model)
-     - [Computational Model](#computational-model)
-     - [Results and Output](#results-and-output)
-4. [Backup Operations and Setup Instructions](#backup-operations-and-setup-instructions)
-5. [Execution](#execution)
-6. [Authors and Contacts](#authors-and-contacts)
-7. [License](#license)
-8. [Acknowledgements](#acknowledgements)
-9. [How to Cite](#how-to-cite)
-10. [References](#references)
+1. 📝 [Synthetic Description](#synthetic-description)
+2. 💻 [Installation and Prerequisites](#installation-and-prerequisites)
+3. 🏗️ [Principal Architecture of the Tool](#principal-architecture-of-the-tool)
+   - ⚙️ [Computational Framework](#computational-framework)
+   - 🧩 [Architectural Framework](#architectural-framework)
+     - 📥 [Input Model](#input-model)
+     - 📊 [Results and Output](#results-and-output)
+4. 🔧 [Backup Operations and Setup Instructions](#backup-operations-and-setup-instructions)
+5. ▶️ [Execution](#execution)
+6. 👨‍💻 [Authors and Contacts](#authors-and-contacts)
+7. ⚖️ [License](#license)
+8. 🙏 [Acknowledgements](#acknowledgements)
+9. 📖 [How to Cite](#how-to-cite)
+10. 📚 [References](#references)
 
 ---
 
@@ -59,12 +58,10 @@ The computational structure developed for the tool follows the one presented by 
 
 ---
 
-## ⚙️ Architectural Framework
+## Architectural Framework
 
 The **LCA4DH** tool is fully implemented using **Brightway2.5**, leveraging its node–edge architecture to model the life cycle of **District Heating and Cooling (DHC) systems**. The software is designed to assess the **environmental profile** of the entire network across its **life cycle**, following the lifecycle modules defined in **EN 15804 + A2**.  
 
-> **Note:** An illustrative figure showing the evaluated life cycle modules can be inserted here using:
-> `![Life Cycle Modules](path_to_image)`
 The computational engine is organized into three interconnected sections:  
 
 1. **Input Model** – Handles the integration of user-provided and external datasets.  
@@ -97,7 +94,7 @@ This architecture supports modular analyses — each component can be assessed i
 This structure allows for **dynamic computation of both LCIs and life cycle impact results**. 
 ---
 
-### 🧩 Input Model
+### Input Model
 
 The **input model** defines the structure and workflow for incorporating both user-supplied and external datasets.  
 Users provide **activity data**, such as operational parameters and technical specifications, via a structured **Excel interface**.
@@ -130,7 +127,7 @@ Outputs can be expressed per functional unit or as relative contributions, enabl
 
 ---
 
-### 🧠 Summary
+## Summary
 
 The **Brightway2.5-based architecture** ensures a transparent, modular, and reproducible computational workflow.  
 By integrating **structured Excel data**, **ecoinvent 3.11 EN 15804**, and the **EF 3.1** characterization method, the LCA4DH engine provides a scalable platform for evaluating the environmental performance of District Heating and Cooling Networks.
@@ -139,7 +136,7 @@ By integrating **structured Excel data**, **ecoinvent 3.11 EN 15804**, and the *
 
 ---
 
-## 🔧 Backup Operations and Setup Instructions
+## Backup Operations and Setup Instructions
 
 Before running any simulations, download the entire package without modifying the position or hierarchy of its contents.
 
@@ -185,9 +182,9 @@ These steps are required only the first time the tool is executed. Once the tool
 
 ---
 
-## EXECUTION
+### EXECUTION
 
-📘 Excel File Compilation
+## Excel File Compilation
 
 The input data describing the district heating network must be entered in the dedicated Excel file named `CompilatoreBackup.xlsm`. Macros composing the mentioned file should not be modified!
 This file contains a main sheet called `generatorsConfig`:
@@ -295,7 +292,7 @@ All sheets must be fully completed before running the tool.
 
 ---
 
-▶️ Running the Environment  
+## Running the Environment  
 Once Miniconda, Brightway, and the required libraries are installed:  
 - Activate your Brightway environment within Miniconda.  
 - Open Jupyter Lab and navigate to the provided scripts.  
@@ -303,7 +300,7 @@ Once Miniconda, Brightway, and the required libraries are installed:
 
 ---
 
-## 🧑‍🔬 Authors and Contacts
+### Authors and Contacts
 
 **Kevin Autelitano**  
 *Politecnico di Milano*  
@@ -315,7 +312,7 @@ Once Miniconda, Brightway, and the required libraries are installed:
 
 ---
 
-## ⚖️ License
+### License
 
 This tool is distributed under the **Apache License, Version 2.0 (January 2004)**.  
 You may not use this software except in compliance with the License.
@@ -328,7 +325,7 @@ See the License for the specific language governing permissions and limitations 
 
 ---
 
-## 🙏 Acknowledgements
+### Acknowledgements
 
 The authors would like to thank **ReLab - Prof. Motta research group** for the technical support provided in the development of this tool and the **NEST Foundation** for their collaboration.
 
@@ -343,7 +340,7 @@ According to Attachment E of Decree No. 1561/2022
 
 ---
 
-## 📖 How to Cite
+### How to Cite
 
 If you use this tool, please cite it as:
 
@@ -351,7 +348,7 @@ If you use this tool, please cite it as:
 
 ---
 
-## 📚 References
+### References
 
 Autelitano, K., Famiglietti, J., Aprile, M., Motta, M. (2024). *Towards Life Cycle Assessment for the Environmental Evaluation of District Heating and Cooling: A Critical Review.* Standards, 102–132.
 
