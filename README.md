@@ -1,20 +1,41 @@
-# LCA4DH  
-### A Life Cycle Assessment data-driven tool for the evaluation of district heating and cooling networks  
+# LCA4DH
+### A Life Cycle Assessment data-driven tool for the evaluation of district heating and cooling networks
 
 **“Measuring today, designing a sustainable heat for tomorrow.”**
 
-## Synthetic Description  
+## Table of Contents
+1. [Synthetic Description](#synthetic-description)
+2. [Installation and Prerequisites](#installation-and-prerequisites)
+3. [Principal Architecture of the Tool](#principal-architecture-of-the-tool)
+   - [Computational Framework](#computational-framework)
+   - [Architectural Framework](#architectural-framework)
+     - [Input Model](#input-model)
+     - [Computational Model](#computational-model)
+     - [Results and Output](#results-and-output)
+4. [Backup Operations and Setup Instructions](#backup-operations-and-setup-instructions)
+5. [Execution](#execution)
+6. [Authors and Contacts](#authors-and-contacts)
+7. [License](#license)
+8. [Acknowledgements](#acknowledgements)
+9. [How to Cite](#how-to-cite)
+10. [References](#references)
+
+---
+
+## Synthetic Description
 The authors developed and provided a computational code delivered as an open-source tool written in **Python**.  
-The tool allows **energy utility companies** operating in the **District Heating and Cooling (DHC)** sector — as well as other stakeholders — to evaluate the **environmental profile** of the thermal energy supplied to buildings by district networks in an **automated and standardized** way, fully compliant with the requirements of the new **Energy Performance of Buildings Directive (EPBD, version 4)**.  
+The tool allows **energy utility companies** operating in the **District Heating and Cooling (DHC)** sector — as well as other stakeholders — to evaluate the **environmental profile** of the thermal energy supplied to buildings by district networks in an **automated and standardized** way, fully compliant with the requirements of the new **Energy Performance of Buildings Directive (EPBD, version 4)**.
 
 The tool integrates **Brightway2.5** as its core computational engine for **Life Cycle Assessment (LCA)**.
 
-## Installation and Prerequisites  
+---
 
-Main Python environment and package versions:  
+## Installation and Prerequisites
+
+Main Python environment and package versions:
 
 | Package | Version |
-|----------|----------|
+|---|---|
 | python | 3.12.9 |
 | jupyterlab | 4.3.6 |
 | pandas | 2.2.3 |
@@ -29,78 +50,82 @@ Main Python environment and package versions:
 | bw2calc | 2.0.1 |
 | ecoinvent licence | ecoinvent 3.11 EN 15804+A2 |
 
-## PRINCIPAL ARCHITECTURE OF THE TOOL 
-## Computational framework
-the computational structure developed for the tool in this research will be simplified when it is compared with what was explained by Beccali, Cellura, and Di Matteo (1997), Heijungs and Suh (2002), Ardente, Beccali, and Cellura (2004). The engine imports an emission/characterization factors matrix (Q'). As noted, it consists of rows representing products (District Heating and Cooling components components) and elementary
-flows and columns representing the impact category for each process and environmental intervention. The matrix was then multiplied by an A' matrix to obtain the scores (per functional unit – fU, equal to 1 kWh of heating or cooling provided by the network) for the heating or cooling supplied by the network analyzed. Matrix A' comprises rows representing life cycle Modules and columns representing products and environmental flows (e.g., kg of steel per fU, CO₂ emission for combustion of natural gas per fU, etc.). Figure 3 schematizes the two matrices, A' and Q',
-showing the matrix h' with the scores, represented by Modules in rows and impact categories in columns.
+---
+
+## PRINCIPAL ARCHITECTURE OF THE TOOL
+
+### Computational framework
+The computational structure developed for the tool follows the one presented by explained by Beccali, Cellura, and Di Matteo (1997), Heijungs and Suh (2002), Ardente, Beccali, and Cellura (2004). The engine imports an emission/characterization factors matrix (Q'). As noted, it consists of rows representing products (District Heating and Cooling components) and elementary flows and columns representing the impact category for each process and environmental intervention. The matrix was then multiplied by an A' matrix to obtain the scores (per functional unit – fU, equal to 1 kWh of heating or cooling provided by the network) for the heating or cooling supplied by the network analyzed. Matrix A' comprises rows representing life cycle Modules and columns representing products and environmental flows (e.g., kg of steel per fU, CO₂ emission for combustion of natural gas per fU, etc.). Figure 3 schematizes the two matrices, A' and Q', showing the matrix h' with the scores, represented by Modules in rows and impact categories in columns.
+
+---
 
 ## ⚙️ Architectural Framework
 
-The computational engine of **LCA4DH** has been fully implemented in **Brightway2.5**, leveraging its node–edge architecture to perform Life Cycle Assessment (LCA) of District Heating and Cooling Networks (DHCNs).  
-Each **node** represents the specific module describing the life cycle of each specific energy system or infrastructure (e.g., boiler, Combined Heat and Power unit, heat pump, thermal storage), while **edges** define material, energy, and emission exchanges among them. This structure allows the model to compute life cycle inventories (LCI) and impacts dynamically, following the physical and logical connections of the analyzed system.
+The **LCA4DH** tool is fully implemented using **Brightway2.5**, leveraging its node–edge architecture to model the life cycle of **District Heating and Cooling (DHC) systems**. The software is designed to assess the **environmental profile** of the entire network across its **life cycle**, following the lifecycle modules defined in **EN 15804 + A2**.  
 
-The engine is composed of three interconnected sections:
+> **Note:** An illustrative figure showing the evaluated life cycle modules can be inserted here using:
+> `![Life Cycle Modules](path_to_image)`
+The computational engine is organized into three interconnected sections:  
 
-1. **Input Model**  
-2. **Computational Model**  
-3. **Output Model**
+1. **Input Model** – Handles the integration of user-provided and external datasets.  
+2. **Computational Model** – Executes the Life Cycle Inventories (LCI) and impact calculations via the Brightway node–edge network.  
+3. **Output Model** – Consolidates results, enabling reporting by technology or life cycle stage.
 
+The tool is structured across different **Python scripts** and **Excel workbooks**. The main entry point is `RUN.ipynb`, where the user executes the full calculation workflow. The script is able to: 
+- Aggregate input data from all components;  
+- Manages exchanges among subsystems;  
+- Normalizes results to the **functional unit**;  
+- Ensures correct data transfer among life cycle modules.
+
+Input data for the analysis are sourced from:  
+- **`parametriEoL.xlsx`** – Contains key parameters from literature necessary for assessing end-of-life impacts of network components.  
+- **Scripts in the `Energy_systems` folder**. They are launched directly by 'RUN.ipynb' and utilize the input data from `CompilatoreBackup.xlsm` for processing the empirical correlations and calculate the **Life Cycle Inventories (LCI)** for any energy system or infrastructure component present in the network.  
+
+Each type of energy system is implemented in a **dedicated Python script**, while **infrastructure component parameters and correlations** are stored in `Auxiliaries.ipynb`.  
+
+The tool follows the **node-edge logic** outlined in [Brightway documentation](https://docs.brightway.dev/en/latest/content/overview/structure.html). 
+In this framework:  
+
+- **Nodes** correspond to individual life cycle modules of specific energy systems (e.g., A1–A3 for boilers, A4 for CHP, C3 for heat pumps).  
+- **Edges** define material and energy exchanges between components.
+
+Each activity corresponds to a life cycle module or process stage, consistent with **EN 15804:2019** (CEN, 2019).
+Processing and calculations are executed automatically through Brightway’s internal methods, where each node can retrieve and apply emission and characterization data dynamically, ensuring consistency and reproducibility across all modules.
+
+This architecture supports modular analyses — each component can be assessed independently or integrated into a full system simulation — and allows quick recalculations if input data or parameters are updated.
+
+This structure allows for **dynamic computation of both LCIs and life cycle impact results**. 
 ---
 
 ### 🧩 Input Model
 
 The **input model** defines the structure and workflow for incorporating both user-supplied and external datasets.  
-Users provide **activity data**, such as operational parameters and technical specifications, via a structured **Excel interface**.  
+Users provide **activity data**, such as operational parameters and technical specifications, via a structured **Excel interface**.
 
-This file includes:
-- An **introductory sheet**, describing the general configuration of the DHCN — including energy system typologies, network parameters, and auxiliary subsystems;  
-- A series of **automatically generated sheets**, one for each technology, where the number of rows corresponds to the number of installed units (e.g., multiple boilers or CHP units).  
+The 'CompilatoreBackup.xlsx' file includes:
+- An **introductory sheet**, named 'GeneratorConfig', describing the general configuration of the District Heating and Cooling Network — including energy system typologies, network parameters, and auxiliary subsystems;  
+- A series of **automatically generated sheets**, one for each technology, where the user insert specific data regarding the single technology appliance. Number of rows corresponds to the number of installed units (e.g., multiple boilers or CHP units).
 
 > Example:  
 > A DHCN composed of four natural gas boilers, one CHP unit, and one cooling tower will generate three sheets — one with four rows (boilers), and one each for the CHP and cooling tower.
 
-If **primary data** from the DHCN operator are unavailable, **secondary data** sourced from literature are used as reliable substitutes.
+If **primary data** from the DHCN operator are unavailable, **secondary data** sourced from literature could be used as reliable substitutes.
 
 External datasets include:
-- **Emission factors** from **ecoinvent 3.11 EN 15804** (Wernet et al., 2016);  
+- **Emission factors database** from **ecoinvent 3.11 EN 15804** (Wernet et al., 2016) and directly called by Brightway 2.5;  
 - **Characterization factors** from the **Environmental Footprint (EF 3.1)** method (Fazio et al., 2018);  
 - **End-of-Life (EoL)** coefficients for materials and processes.
 
-To optimize computation speed and ensure data integrity, emission factors are **pre-structured** in a *closed-structure* Excel or `.pkl` file.  
-A dedicated **Python preprocessor**, operating independently from the Brightway engine, extracts only relevant data from the full ecoinvent database. This process:
-- Filters out redundant or irrelevant flows;  
-- Normalizes data per **functional unit (fU)**;  
-- Stores only the required indicators from the chosen characterization method.  
+To optimize computation speed and ensure data integrity, emission factors are **pre-structured** in a *closed-structure* Excel file.  
 
-Similarly, the **EoL parameters** are preprocessed and stored in a separate file (`Parametri_EoL.xlsx`), containing coefficients for recycling, incineration, and landfill fractions. These can be manually adjusted by the user when more reliable primary data become available.
-
----
-
-### 🔗 Computational Model
-
-The **computational model** represents the core of the engine.  
-It operates through a network of **interconnected Brightway activities** (nodes) and exchanges (edges), forming a graph that mirrors the physical and operational structure of the DHCN.
-
-Each activity corresponds to a life cycle module or process stage, consistent with **EN 15804:2019** (CEN, 2019). The relationships defined in previous project phases are implemented to calculate impacts for each component and phase of the network.
-
-
-These calculations are executed automatically through Brightway’s internal methods, where each node can retrieve and apply emission and characterization data dynamically, ensuring consistency and reproducibility across all modules.
-
-Each module (e.g., *Boiler*, *Heat Pump*, *CHP*, *Thermal Storage*) operates as an independent Brightway script, but all communicate through a **central orchestrating script**, which:
-- Aggregates results from all components;  
-- Manages exchanges among subsystems;  
-- Normalizes results to the **functional unit**;  
-- Ensures correct data transfer among life cycle modules.
-
-This architecture supports modular analyses — each component can be assessed independently or integrated into a full system simulation — and allows quick recalculations if input data or parameters are updated.
+Similarly, the **End-of-Life parameters** are preprocessed and stored in a separate file (`Parametri_EoL.xlsx`), containing coefficients for recycling, incineration, and landfill fractions. These can be manually adjusted by the user when more reliable primary data become available.
 
 ---
 
 ### RESULTS AND OUTPUT
 
-The **output model** consolidates and organizes results derived from the Brightway computational graph.  
-While detailed output handling is described in a separate section, the computational engine is designed to provide flexible aggregation of results both **by technology** (e.g., boilers, heat pumps, CHP) and **by life cycle stage** (A–D). 
+The **output model** consolidates and organizes results derived from the Brightway computational engine.  
+While detailed output handling is described in a separate section, the computational engine is designed to provide flexible aggregation of results both **by technology** (e.g., boilers, heat pumps, CHP) and **by life cycle stage** (A–D).  
 Outputs can be expressed per functional unit or as relative contributions, enabling users to identify critical components and guide system optimization.
 
 ---
@@ -112,7 +137,9 @@ By integrating **structured Excel data**, **ecoinvent 3.11 EN 15804**, and the *
 
 > For further information on input data structures, calibration methodologies, and datasets, please refer to the related scientific publications.
 
-🔧 Backup Operations and Setup Instructions
+---
+
+## 🔧 Backup Operations and Setup Instructions
 
 Before running any simulations, download the entire package without modifying the position or hierarchy of its contents.
 
@@ -120,71 +147,63 @@ Before running any simulations, download the entire package without modifying th
 
 To ensure correct functionality of the computational engine, please install the following tools:
 
-Miniconda
-
-Brightway 2.5
-
-Jupyter Lab
+- Miniconda  
+- Brightway 2.5  
+- Jupyter Lab  
 
 It is strongly recommended to follow the official Brightway installation guide linked above.
 
 2. Importing Ecoinvent Databases
 
-You must also install the Ecoinvent biosphere and Ecoinvent 3.11 EN15804 databases.
-Follow the official instructions provided here:
-👉 Importing Ecoinvent into Brightway
+You must also install the Ecoinvent biosphere and Ecoinvent 3.11 EN15804 databases.  
+Follow the official instructions provided here: Importing Ecoinvent into Brightway
 
-Important:
+Important:  
 During installation, the authors renamed the databases as follows:
 
-- ei = ecoinvent-3.11-EN15804
+- `ei` = ecoinvent-3.11-EN15804
 
-- bio = ecoinvent-3.11-biosphere
+- `bio` = ecoinvent-3.11-biosphere
 
 For the tool to work properly, make sure to update these names in the scripts according to the database names you chose during installation.
 
 3. Project Configuration
 
-The tool is designed to run within the LCA4DHC project, which has been preconfigured by the authors.
-Users are free to import the package into a different Brightway project; however, for beginners, it is strongly advised not to modify the project structure or its contents.
+The tool is designed to run within the LCA4DHC project, which has been preconfigured by the authors.  
+Users are free to import the package into a different Brightway project; however, for beginners, it is strongly advised not to modify the project structure or its contents.  
 The tool must be executed in the same Brightway project where the Ecoinvent libraries have been imported.
 
-🗂 Folder Path Configuration
-To ensure correct execution, some folder paths must be updated manually:
-Open the script Libraries.ipynb.
-Modify the following variables according to your local setup:
-ENERGYSYSTEM_PATH
-ROOT_PATH
-base_path
-These paths must point to the correct directories within your local environment.
-These steps are required only the first time the tool is executed.
-Once the tool has been successfully run, you do not need to repeat them.
+🗂 Folder Path Configuration  
+To ensure correct execution, some folder paths must be updated manually:  
+Open the script `Libraries.ipynb`.  
+Modify the following variables according to your local setup:  
+- `ENERGYSYSTEM_PATH`  
+- `ROOT_PATH`  
+- `base_path`  
+These paths must point to the correct directories within your local environment.  
+These steps are required only the first time the tool is executed. Once the tool has been successfully run, you do not need to repeat them.
+
+---
 
 ## EXECUTION
 
 📘 Excel File Compilation
 
-The input data describing the district heating network must be entered in the dedicated Excel file named CompilatoreBackup.xlsx.
-
-This file contains a main sheet called generatorsConfig:
-
+The input data describing the district heating network must be entered in the dedicated Excel file named `CompilatoreBackup.xlsm`. Macros composing the mentioned file should not be modified!
+This file contains a main sheet called `generatorsConfig`:
 The first section collects general information about the network.
-
 The energy systems section refers to the general inventory of the systems included in the network.
+Once the required information has been filled in, clicking the 'START' button activates a macro that automatically generates additional Excel sheets corresponding to each specific energy system.
 
-Once the required information has been filled in, clicking the Start button activates a macro that automatically generates additional Excel sheets corresponding to each specific energy system.
+Note:  
+Only the sheets associated with the selected energy systems are activated. Systems for which the user has set the number of units to 0 will not be activated.
 
-Note:
-Only the sheets associated with the selected energy systems are activated.
-Systems for which the user has set the number of units to 0 will not be activated.
-
-Each sheet related to an energy system requires specific input data for that particular machine or technology.
-A reference table is provided below (or in the documentation) listing all required inputs and detailed instructions for completing each section.
+Each sheet related to an energy system requires specific input data for that particular machine or technology. A reference table is provided below (or in the documentation) listing all required inputs and detailed instructions for completing each section.
 
 All sheets must be fully completed before running the tool.
 
 | **General information / Energy systems** | **Specific data input** | **Data entry information** |
-|------------------------------------------|--------------------------|-----------------------------|
+|---|---:|---|
 | **General data input** |  |  |
 | General information | Reference scenario year | Choose among the options |
 |  | District Heating and Cooling typology | Choose among the options |
@@ -274,33 +293,35 @@ All sheets must be fully completed before running the tool.
 |  | Energy produced [kWh/year] | Input value |
 |  | Efficiency (between 0 and 1) | Input value |
 
+---
 
-▶️ Running the Environment
-Once Miniconda, Brightway, and the required libraries are installed:
-Activate your Brightway environment within Miniconda.
-Open Jupyter Lab and navigate to the provided scripts.
-Launch the script named RUN.ipynb to initialize the databases and verify the configuration.
+▶️ Running the Environment  
+Once Miniconda, Brightway, and the required libraries are installed:  
+- Activate your Brightway environment within Miniconda.  
+- Open Jupyter Lab and navigate to the provided scripts.  
+- Launch the script named `RUN.ipynb` to initialize the databases and verify the configuration.
+
+---
 
 ## 🧑‍🔬 Authors and Contacts
 
 **Kevin Autelitano**  
 *Politecnico di Milano*  
-📧 kevin.autelitano@polimi.it  
+📧 kevin.autelitano@polimi.it
 
 **Jacopo Famiglietti**  
 *Politecnico di Milano*  
-📧 jacopo.famiglietti@polimi.it  
-
+📧 jacopo.famiglietti@polimi.it
 
 ---
 
 ## ⚖️ License
 
 This tool is distributed under the **Apache License, Version 2.0 (January 2004)**.  
-You may not use this software except in compliance with the License.  
+You may not use this software except in compliance with the License.
 
 A copy of the License is available at:  
-[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)  
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an **"AS IS" BASIS**, without warranties or conditions of any kind, either express or implied.  
 See the License for the specific language governing permissions and limitations under the License.
@@ -309,7 +330,7 @@ See the License for the specific language governing permissions and limitations 
 
 ## 🙏 Acknowledgements
 
-The authors would like to thank **ReLab Laboratory** for the technical support provided in the development of this tool and the **NEST Foundation** for their collaboration.
+The authors would like to thank **ReLab - Prof. Motta research group** for the technical support provided in the development of this tool and the **NEST Foundation** for their collaboration.
 
 This project has been funded under the **National Recovery and Resilience Plan (NRRP)**, Mission 4 Component 2 Investment 1.3 – *Call for tender No. 1561 of 11.10.2022* by the *Italian Ministry of University and Research (MUR)*; funded by the **European Union – NextGenerationEU**.
 
@@ -321,45 +342,48 @@ According to Attachment E of Decree No. 1561/2022
 **Project title:** *Network 4 Energy Sustainable Transition – NEST*
 
 ---
+
 ## 📖 How to Cite
 
 If you use this tool, please cite it as:
 
 > Autelitano, K., & Famiglietti, J. (2025). *LCA Tool for District Heating Networks*. Zenodo. https://doi.org/10.5281/zenodo.xxxxxx
 
+---
+
 ## 📚 References
 
 Autelitano, K., Famiglietti, J., Aprile, M., Motta, M. (2024). *Towards Life Cycle Assessment for the Environmental Evaluation of District Heating and Cooling: A Critical Review.* Standards, 102–132.
 
 Autelitano, K., Famiglietti, J., Toppi, T., Motta, M. (2023). *Empirical power-law relationships for the Life Cycle Assessment of heat pump units.* Clean. Environ. Syst., 10, 100135.  
-[https://doi.org/10.1016/j.cesys.2023.100135](https://doi.org/10.1016/j.cesys.2023.100135)
+https://doi.org/10.1016/j.cesys.2023.100135
 
 Bartolozzi, I., Rizzi, F., Frey, M. (2017). *Are district heating systems and renewable energy sources always an environmental win-win solution? A life cycle assessment case study in Tuscany, Italy.* Renew. Sustain. Energy Rev., 80, 408–420.  
-[https://doi.org/10.1016/j.rser.2017.05.231](https://doi.org/10.1016/j.rser.2017.05.231)
+https://doi.org/10.1016/j.rser.2017.05.231
 
 CEN (2017). *EN 15316-4-5: Energy performance of buildings – Method for calculation of system energy requirements and system efficiencies – Part 4-5: District heating and cooling.* Bruxelles.
 
 Famiglietti, J., Gerevini, L., Spirito, G., Pozzi, M., Dénarié, A., Scoccia, R., Motta, M. (2021). *Environmental Life Cycle Assessment scenarios for a district heating network: An Italian case study.* Energy Reports, 7, 368–379.  
-[https://doi.org/10.1016/j.egyr.2021.08.094](https://doi.org/10.1016/j.egyr.2021.08.094)
+https://doi.org/10.1016/j.egyr.2021.08.094
 
 Famiglietti, J., Toosi, H.A., Dénarié, A., Motta, M. (2022). *Developing a new data-driven LCA tool at the urban scale: The case of the energy performance of the building sector.* Energy Convers. Manag., 256.  
-[https://doi.org/10.1016/j.enconman.2022.115389](https://doi.org/10.1016/j.enconman.2022.115389)
+https://doi.org/10.1016/j.enconman.2022.115389
 
 Fazio, S., Castellani, V., Sala, S., Schau, E.M., Secchi, M., Zampori, L., Diaconu, E. (2018). *Supporting information to the characterisation factors of recommended EF Life Cycle Impact Assessment method.* EUR 28888 EN, European Commission, Ispra.  
-[https://doi.org/10.2760/671368](https://doi.org/10.2760/671368)
+https://doi.org/10.2760/671368
 
 Heck, T. (2012). *LCI Analysis of Heat Pumps.* Ecoinvent report.
 
 International Organization for Standardization (2021). *UNI EN ISO 14044:2021 - Environmental management - Life cycle assessment - Requirements and guidelines.*
 
 ISTAT (2024). *Demo - Demografia in cifre.*  
-[https://www.demo.istat.it](https://www.demo.istat.it) (accessed 2025-02-01).
+https://www.demo.istat.it (accessed 2025-02-01).
 
 Pizzol, M. (2019). *Deterministic and stochastic carbon footprint of intermodal ferry and truck freight transport across Scandinavian routes.* J. Clean. Prod., 224, 626–636.  
-[https://doi.org/10.1016/j.jclepro.2019.03.270](https://doi.org/10.1016/j.jclepro.2019.03.270)
+https://doi.org/10.1016/j.jclepro.2019.03.270
 
 Vauchez, M., Famiglietti, J., Autelitano, K., Colombert, M., Scoccia, R., Motta, M. (2023). *Life Cycle Assessment of District Heating Infrastructures: A Comparison of Pipe Typologies in France.* Energies, 16, 1–23.  
-[https://doi.org/10.3390/en16093912](https://doi.org/10.3390/en16093912)
+https://doi.org/10.3390/en16093912
 
 Wernet, G., Bauer, C., Steubing, B., Reinhard, J., Moreno-Ruiz, E., Weidema, B. (2016). *The Ecoinvent database version 3 (Part I): Overview and methodology.* Int. J. Life Cycle Assess., 21, 1218–1230.
 
