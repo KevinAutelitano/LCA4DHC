@@ -170,16 +170,6 @@ The tool is designed to run within the LCA4DHC project, which has been preconfig
 Users are free to import the package into a different Brightway project; however, for beginners, it is strongly advised not to modify the project structure or its contents.  
 The tool must be executed in the same Brightway project where the Ecoinvent libraries have been imported.
 
-🗂 Folder Path Configuration  
-To ensure correct execution, some folder paths must be updated manually:  
-Open the script `Libraries.ipynb`.  
-Modify the following variables according to your local setup:  
-- `ENERGYSYSTEM_PATH`  
-- `ROOT_PATH`  
-- `base_path`  
-These paths must point to the correct directories within your local environment.  
-These steps are required only the first time the tool is executed. Once the tool has been successfully run, you do not need to repeat them.
-
 ---
 
 ### EXECUTION
@@ -223,14 +213,14 @@ All sheets must be fully completed before running the tool.
 |  | Renewable Energy Certificates from Heolic electricity production (between 0 and 1) | Input value |
 | Energy systems | Number of appliances | Input value |
 | **Specific data related to energy systems** |  |  |
-| Boiler | Power [kW] | Input value |
+| Boiler | Thermal capacity [kW] | Input value |
 |  | Energy produced [kWh/year] | Input value |
 |  | Efficiency (between 0 and 1) | Input value |
 |  | Energy source (Gas-blend, LPG, Biomethane, Hydrogen) | Choose among the options |
-| Fuel oil boiler / Biomass boiler | Power [kW] | Input value |
+| Fuel oil boiler / Biomass boiler | Thermal capacity [kW] | Input value |
 |  | Energy produced [kWh/year] | Input value |
 |  | Efficiency (between 0 and 1) | Input value |
-| CHP – Internal Combustion Engine / Turbogas / Combined Cycle | Power [kW] | Input value |
+| CHP – Internal Combustion Engine / Turbogas / Combined Cycle | Thermal capacity [kW] | Input value |
 |  | Electrical efficiency based on LHV (between 0 and 1) | Input value |
 |  | Heat efficiency based on LHV (between 0 and 1) | Input value |
 |  | Electric energy produced in a year (exported and consumed) [kWh/year] | Input value |
@@ -240,7 +230,7 @@ All sheets must be fully completed before running the tool.
 |  | Energy input from gas-blend [kWh/year] | Input value |
 |  | Energy input from biogas [kWh/year] | Input value |
 |  | Energy input from hydrogen [kWh/year] | Input value |
-| CHP – Organic Rankine Cycle | Power [kW] | Input value |
+| CHP – Organic Rankine Cycle | Thermal capacity [kW] | Input value |
 |  | Electrical efficiency based on LHV (between 0 and 1) | Input value |
 |  | Heat efficiency based on LHV (between 0 and 1) | Input value |
 |  | Electric energy produced in a year (exported and consumed) [kWh/year] | Input value |
@@ -248,7 +238,7 @@ All sheets must be fully completed before running the tool.
 |  | Biomass used as a waste ['yes' or 'no'] | Choose among the options |
 |  | Supply temperature [°C] | Input value |
 |  | Return temperature [°C] | Input value |
-| CHP – Waste-to-Energy | Power [kW] | Input value |
+| CHP – Waste-to-Energy | Thermal capacity [kW] | Input value |
 |  | Electrical efficiency based on LHV (between 0 and 1) | Input value |
 |  | Heat efficiency based on LHV (between 0 and 1) | Input value |
 |  | Lower Heating Value Biowaste [kWh/kg of waste] | Input value |
@@ -260,7 +250,7 @@ All sheets must be fully completed before running the tool.
 |  | Supply temperature [°C] | Input value |
 |  | Return temperature [°C] | Input value |
 | Electric Heat Pump | Cold source (Groundwater, Surface water, Industrial waste water, Air) | Choose among the options |
-|  | Power [kW] | Input value |
+|  | Thermal capacity [kW] | Input value |
 |  | Energy produced [kWh/year] | Input value |
 |  | SCOP | Input value |
 |  | Energy input from national grid [kWh/year] | Input value |
@@ -270,22 +260,22 @@ All sheets must be fully completed before running the tool.
 |  | Energy input from CHP-Gas Turbine [kWh/year] | Input value |
 |  | Energy input from CHP-Waste-to-Energy [kWh/year] | Input value |
 |  | Energy input from CHP-Organic Rankine Cycle [kWh/year] | Input value |
-| Gas Engine Heat Pump | Power [kW] | Input value |
+| Gas Engine Heat Pump | Thermal capacity [kW] | Input value |
 |  | Energy produced [kWh/year] | Input value |
 |  | SGUE | Input value |
-| Geothermal Plant | Power [kW] | Input value |
+| Geothermal Plant | Thermal capacity [kW] | Input value |
 |  | Thermal energy produced [kWh/year] | Input value |
 |  | Energy input vapour [kWh/year] | Input value |
 |  | Supply temperature vapour [°C] | Input value |
 |  | Return temperature vapour [°C] | Input value |
-| Solar Thermal System | Power [kW] | Input value |
+| Solar Thermal System | Thermal capacity [kW] | Input value |
 |  | Producibility [kWh/year] | Input value |
 |  | Location | Choose among the options |
 | Concrete / Steel Thermal Storage | Storage [m³] | Input value |
 |  | Energy stored [kWh/year] | Input value |
 | Heat Recovery | Power [kW] | Input value |
 |  | Thermal energy recovered [kWh/year] | Input value |
-| Cooling – Cooling Tower / Absorption Chiller | Power [kW] | Input value |
+| Cooling – Cooling Tower / Absorption Chiller | Thermal capacity [kW] | Input value |
 |  | Electric energy absorbed [kWh/year] | Input value |
 |  | Energy produced [kWh/year] | Input value |
 |  | Efficiency (between 0 and 1) | Input value |
@@ -372,9 +362,6 @@ https://doi.org/10.2760/671368
 Heck, T. (2012). *LCI Analysis of Heat Pumps.* Ecoinvent report.
 
 International Organization for Standardization (2021). *UNI EN ISO 14044:2021 - Environmental management - Life cycle assessment - Requirements and guidelines.*
-
-ISTAT (2024). *Demo - Demografia in cifre.*  
-https://www.demo.istat.it (accessed 2025-02-01).
 
 Pizzol, M. (2019). *Deterministic and stochastic carbon footprint of intermodal ferry and truck freight transport across Scandinavian routes.* J. Clean. Prod., 224, 626–636.  
 https://doi.org/10.1016/j.jclepro.2019.03.270
