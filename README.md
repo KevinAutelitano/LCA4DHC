@@ -1,15 +1,13 @@
 # LCA4DHC  
 *A Life Cycle Assessment data-driven tool for the evaluation of District Heating and Cooling networks*
 
-**“Measuring today, designing a sustainable heat for tomorrow.”**
-
 ---
 
 ## Project Goals
 
-LCA4DHC is a data-driven Life Cycle Assessment (LCA) tool designed to support the environmental evaluation of District Heating and Cooling (DHC) networks.
+LCA4DHC is a data-driven Life Cycle Assessment (LCA) tool designed to support the environmental evaluation of District Heating and Cooling Networks (DHCN).
 
-The main objectives of the tool are to:
+The tool aims to:
 
 - Evaluate the environmental impacts of heat and cooling supplied by DHC networks on a **life cycle basis**
 - Ensure compliance with **EPBD (Energy Performance of Buildings Directive, version 4)** requirements
@@ -76,9 +74,9 @@ LCA4DHC relies on the following third-party software and databases:
 
 ## License
 
-This project is distributed under the **Apache License, Version 2.0 (January 2004)**.
+LCA4DHC project is distributed under the **Apache License, Version 2.0 (January 2004)**.
 
-You may not use this software except in compliance with the License.  
+The tool may not be use except in compliance with the License.  
 Unless required by applicable law or agreed to in writing, the software is distributed on an **“AS IS” basis**, without warranties or conditions of any kind.
 
 A copy of the License is available at:  
