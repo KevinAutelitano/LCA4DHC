@@ -86,24 +86,20 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 ## Disclaimer
 
-The LCA4DHC tool is provided for **research, academic, and technical support purposes only**.
+The **LCA4DHC** tool is provided for *research, academic, and technical support purposes only*.
 
-- The authors **do not guarantee** the absence of errors, inaccuracies, or omissions  
-- The authors **accept no liability** for any direct or indirect damages resulting from the use of the tool  
-- Users are **fully responsible** for validating the correctness, robustness, and suitability of the results for their specific application  
-- Results should be independently reviewed, especially when used for regulatory, policy, or decision-making purposes  
+- The authors do **not guarantee** the absence of errors, inaccuracies, or omissions.
+- The authors accept **no liability** for any direct or indirect damages resulting from the use of the tool.
+- Users are **fully responsible** for validating the correctness, robustness, and suitability of the results for their specific application.
+- Results should be **independently reviewed**, especially when used for regulatory, policy, or decision-making purposes.
 
-#### Scenario configuration
+### Scenario configuration
 
-Users can modify decarbonization scenarios for the natural gas vector and for
-refrigerant gases by selecting the reference scenario year, enabling the analysis
-of different decarbonization pathways over time.
+Users can modify decarbonization scenarios for the **natural gas vector** and **refrigerant gases** by selecting the reference scenario year. This enables the analysis of different decarbonization pathways over time.
 
-Decarbonization scenarios for the electricity vector are not implemented in this
-tool. For electricity-related prospective assessments, please refer to the
-PRospective EnvironMental Impact asSEment (premise) framework:  
-https://doi.org/10.1016/j.rser.2022.112311
----
+Decarbonization scenarios for the **electricity vector** are *not implemented* in this tool. For electricity-related prospective assessments, please refer to the  
+[PRospective EnvironMental Impact asSEment (premise)](https://doi.org/10.1016/j.rser.2022.112311).
+
 
 ## Citation (Academic Use)
 
