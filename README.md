@@ -102,7 +102,6 @@ of different decarbonization pathways over time.
 Decarbonization scenarios for the electricity vector are not implemented in this
 tool. For electricity-related prospective assessments, please refer to the
 PRospective EnvironMental Impact asSEment (premise) framework:  
-
 https://doi.org/10.1016/j.rser.2022.112311
 ---
 
