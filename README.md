@@ -93,11 +93,16 @@ The LCA4DHC tool is provided for **research, academic, and technical support pur
 - Users are **fully responsible** for validating the correctness, robustness, and suitability of the results for their specific application  
 - Results should be independently reviewed, especially when used for regulatory, policy, or decision-making purposes  
 
-### Scenario configuration
+#### Scenario configuration
 
-Users can modify decarbonization scenarios for the natural gas vector and for refrigerant gases by selecting the reference scenario year, enabling the analysis of different decarbonization pathways over time.
+Users can modify decarbonization scenarios for the natural gas vector and for
+refrigerant gases by selecting the reference scenario year, enabling the analysis
+of different decarbonization pathways over time.
 
-Decarbonization scenarios for the electricity vector are **not implemented** in this tool. For electricity-related prospective assessments, please refer to the **PRospective EnvironMental Impact asSEment (premise)** framework:  
+Decarbonization scenarios for the electricity vector are not implemented in this
+tool. For electricity-related prospective assessments, please refer to the
+PRospective EnvironMental Impact asSEment (premise) framework:  
+
 https://doi.org/10.1016/j.rser.2022.112311
 ---
 
