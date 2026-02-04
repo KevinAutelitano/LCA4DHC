@@ -72,6 +72,34 @@ LCA4DHC relies on the following third-party software and databases:
 
 ---
 
+## Life Cycle Impact Indicators
+
+The LCA4DHC tool currently implements a selected set of **Life Cycle Impact Assessment (LCIA) indicators** in accordance with **EN 15804 + A2**, using characterization methods from **Environmental Footprint (EF v3.1)** and **IPCC 2021** where applicable.
+
+The following indicators are available in the current version of the tool:
+
+| Acronym | Impact category (EN 15804 + A2) | Method reference |
+|------|---------------------------------|------------------|
+| CC | Climate change – total | EF v3.1 – IPCC 2021 |
+| CCfossil | Climate change – fossil | EF v3.1 – IPCC 2021 |
+| CCbio | Climate change – biogenic | EF v3.1 – IPCC 2021 |
+| CCluc | Climate change – land use and land use change | EF v3.1 – IPCC 2021 |
+| A | Acidification | EN 15804 + A2 |
+| EF | Eutrophication – freshwater | EN 15804 + A2 |
+| EM | Eutrophication – marine | EN 15804 + A2 |
+| ET | Eutrophication – terrestrial | EN 15804 + A2 |
+| POF | Photochemical oxidant formation (human health) | EN 15804 + A2 |
+| PM | Particulate matter formation | EN 15804 + A2 (additional indicators) |
+| OD | Ozone depletion | EN 15804 + A2 |
+| RUF | Energy resources – non-renewable | EN 15804 + A2 |
+| PENRT | Total use of non-renewable primary energy resources | EN 15804 + A2 |
+| RUMM | Material resources – metals and minerals | EN 15804 + A2 |
+| WU | Water use | EN 15804 + A2 |
+
+Indicator selection and implementation are fully transparent within the computational workflow and can be extended in future releases.
+
+---
+
 ## License
 
 LCA4DHC project is distributed under the **Apache License, Version 2.0 (January 2004)**.
@@ -92,6 +120,11 @@ The **LCA4DHC** tool is provided for *research, academic, and technical support 
 - The authors accept **no liability** for any direct or indirect damages resulting from the use of the tool.
 - Users are **fully responsible** for validating the correctness, robustness, and suitability of the results for their specific application.
 - Results should be **independently reviewed**, especially when used for regulatory, policy, or decision-making purposes.
+- The Excel input file **`DataInput` must be fully completed in all its sections**, with all required data fields properly filled in. Incomplete or partially compiled input files may lead to invalid or misleading results.
+
+### Thermal capacity definition
+
+When providing **thermal capacity values** for energy conversion systems (e.g. boilers, CHP units, heat pumps), users must refer to the **useful thermal power delivered to the water circuit** of the district heating or cooling network.
 
 ### Scenario configuration
 
@@ -100,6 +133,7 @@ Users can modify decarbonization scenarios for the **natural gas vector** and **
 Decarbonization scenarios for the **electricity vector** are *not implemented* in this tool. For electricity-related prospective assessments, please refer to the  
 [PRospective EnvironMental Impact asSEment (premise)](https://doi.org/10.1016/j.rser.2022.112311).
 
+---
 
 ## Citation (Academic Use)
 
