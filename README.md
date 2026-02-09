@@ -91,7 +91,7 @@ The following indicators are available in the current version of the tool:
 | POF | Photochemical oxidant formation (human health) | EN 15804 + A2 |
 | PM | Particulate matter formation | EN 15804 + A2 (additional indicators) |
 | OD | Ozone depletion | EN 15804 + A2 |
-| RUF | Energy resources – non-renewable | EN 15804 + A2 |
+| ERnren | Energy resources – non-renewable | EN 15804 + A2 |
 | PENRT | Total use of non-renewable primary energy resources | EN 15804 + A2 |
 | RUMM | Material resources – metals and minerals | EN 15804 + A2 |
 | WU | Water use | EN 15804 + A2 |
