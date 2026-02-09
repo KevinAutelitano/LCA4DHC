@@ -135,6 +135,27 @@ Decarbonization scenarios for the **electricity vector** are *not implemented* i
 
 ---
 
+## References
+
+This tool is based on the following peer-reviewed publications:
+
+- **Famiglietti, J., Toosi, H. A., Dénarié, A., & Motta, M.** (2022).  
+  *Developing a new data-driven LCA tool at the urban scale: The case of the energy performance of the building sector*.  
+  **Energy Conversion and Management**, 256, 115389.  
+  https://doi.org/10.1016/j.enconman.2022.115389
+  
+- **Vauchez, M., Famiglietti, J., Autelitano, K., Colombert, M., Scoccia, R., & Motta, M.** (2023).  
+  *Life Cycle Assessment of District Heating Infrastructures: A Comparison of Pipe Typologies in France*.  
+  **Energies**, 16(9), 3912.  
+  https://doi.org/10.3390/en16093912
+
+- **Autelitano, K., Famiglietti, J., Toppi, T., & Motta, M.** (2023).  
+  *Empirical power-law relationships for the Life Cycle Assessment of heat pump units*.  
+  **Cleaner Environmental Systems**, 9, 100135.  
+  https://doi.org/10.1016/j.cesys.2023.100135
+  
+---
+
 ## Citation (Academic Use)
 
 If you use this tool in academic work, please cite it as:
