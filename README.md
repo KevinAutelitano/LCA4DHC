@@ -63,7 +63,7 @@ Main Python environment and package versions required to run the tool:
 LCA4DHC relies on the following third-party software and databases:
 
 - **Brightway 2.5** – Core Life Cycle Assessment computational framework  
-- **ecoinvent database v3.11 (EN 15804 + A2)** – Emission factors and background processes.
+- **ecoinvent database v3.11 (EN 15804)** – Emission factors and background processes.
 - **Other versions of the ecoinvent databases can be used, provided the process names are updated in the scripts.  
 - **Environmental Footprint method (EF 3.1)** – Life Cycle Impact Assessment characterization factors  
 - **Miniconda** – Python environment and package management  
