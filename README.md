@@ -5,14 +5,14 @@
 
 ## Project Goals
 
-LCA4DHC is a data-driven Life Cycle Assessment (LCA) tool designed to support the environmental evaluation of District Heating and Cooling Networks (DHCN).
+LCA4DHC is a data-driven Life Cycle Assessment (LCA) tool designed to support the environmental evaluation of District Heating and Cooling (DHC) networks.
 
 The tool aims to:
 
-- Evaluate the environmental impacts of heat and cooling supplied by DHC networks on a **life cycle basis**
+- Evaluate the environmental impacts of heat and cooling supplied by DHC networks on a **life cycle thinking**
 - Ensure compliance with **EPBD (Energy Performance of Buildings Directive, version 4)** requirements
-- Support **standardized and automated** LCA calculations according to **EN 15804 + A2**
-- Enable assessments **per technology** and **per life cycle stage (A–D)**
+- Support **standardized and automated** LCA calculations according to **EN 15804 + A2 and EN 50693**
+- Enable assessments **per technology** and **per life cycle module (from A to D) - from-creadle-to-creadle**
 - Integrate **primary data** from network operators with **secondary data** from recognized LCA databases
 - Provide a **modular, transparent, and reproducible** computational framework
 - Facilitate scenario analysis and system optimization through rapid recalculations
@@ -63,18 +63,19 @@ Main Python environment and package versions required to run the tool:
 LCA4DHC relies on the following third-party software and databases:
 
 - **Brightway 2.5** – Core Life Cycle Assessment computational framework  
-- **Ecoinvent database v3.11 (EN 15804 + A2)** – Emission factors and background processes  
+- **ecoinvent database v3.11 (EN 15804 + A2)** – Emission factors and background processes.
+- **Other versions of the ecoinvent databases can be used, provided the process names are updated in the scripts.  
 - **Environmental Footprint method (EF 3.1)** – Life Cycle Impact Assessment characterization factors  
 - **Miniconda** – Python environment and package management  
 - **Jupyter Lab** – Execution environment and user interface  
 
-⚠️ A **valid Ecoinvent license** is required to run the tool.
+⚠️ A **valid ecoinvent license** is required to run the tool.
 
 ---
 
 ## Life Cycle Impact Indicators
 
-The LCA4DHC tool currently implements a selected set of **Life Cycle Impact Assessment (LCIA) indicators** in accordance with **EN 15804 + A2**, using characterization methods from **Environmental Footprint (EF v3.1)** and **IPCC 2021** where applicable.
+The LCA4DHC tool currently implements a selected set of **Life Cycle Impact Assessment (LCIA) indicators** in accordance with **EN 15804 + A2 and EN 50963**, using characterization methods from **Environmental Footprint (EF v3.1)**.
 
 The following indicators are available in the current version of the tool:
 
@@ -104,7 +105,7 @@ Indicator selection and implementation are fully transparent within the computat
 
 LCA4DHC project is distributed under the **Apache License, Version 2.0 (January 2004)**.
 
-The tool may not be use except in compliance with the License.  
+The tool may not be used except in compliance with the License.  
 Unless required by applicable law or agreed to in writing, the software is distributed on an **“AS IS” basis**, without warranties or conditions of any kind.
 
 A copy of the License is available at:  
@@ -124,13 +125,13 @@ The **LCA4DHC** tool is provided for *research, academic, and technical support 
 
 ### Thermal capacity definition
 
-When providing **thermal capacity values** for energy conversion systems (e.g. boilers, CHP units, heat pumps), users must refer to the **useful thermal power delivered to the water circuit** of the district heating or cooling network.
+When providing **thermal capacity values** for energy conversion systems (e.g., boilers, Combined Heat and Power units, heat pumps, etc.), users must refer to the **useful thermal power delivered to the water circuit** of the district heating or cooling network.
 
 ### Scenario configuration
 
 Users can modify decarbonization scenarios for the **natural gas vector** and **refrigerant gases** by selecting the reference scenario year. This enables the analysis of different decarbonization pathways over time.
 
-Decarbonization scenarios for the **electricity vector** are *not implemented* in this tool. For electricity-related prospective assessments, please refer to the  
+Prospective scenarios for the **electricity** and ** other components** are *not implemented* in this tool. For electricity-related prospective assessments, please refer to the  
 [PRospective EnvironMental Impact asSEment (premise)](https://doi.org/10.1016/j.rser.2022.112311).
 
 ---
@@ -160,7 +161,7 @@ This tool is based on the following peer-reviewed publications:
 
 If you use this tool in academic work, please cite it as:
 
-> Autelitano, K., & Famiglietti, J. (2025). *LCA Tool for District Heating Networks*. Zenodo. https://doi.org/10.5281/zenodo.xxxxxx
+> Autelitano, K., & Famiglietti, J. (2026). *LCA Tool for District Heating Networks*. Zenodo. https://doi.org/10.5281/zenodo.xxxxxx
 
 ---
 
