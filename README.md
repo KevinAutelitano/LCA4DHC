@@ -191,3 +191,8 @@ If you encounter bugs, issues, or have suggestions for improvements, please cont
 **Jacopo Famiglietti**  
 *Politecnico di Milano*  
 📧 jacopo.famiglietti@polimi.it  
+
+## Acknowledgments
+
+This tool was funded by the National Recovery and Resilience Plan (NRRP), Mission 4 Component 2 Investment 1.3—Call for tender No. 1561 of 11.10.2022 of Ministero dell’Università e della Ricerca (MUR)—and funded by the European Union, NextGenerationEU, project code PE0000021, Concession Decree No. 1561 of 11.10.2022 adopted by Ministero dell’Università e della Ricerca (MUR), CUP–D43C2200309001, according to attachment E of Decree No. 1561/2022, project title “Network 4 Energy Sustainable Transition–NEST.”
+
