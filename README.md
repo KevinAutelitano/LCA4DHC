@@ -9,7 +9,7 @@ LCA4DHC is a data-driven Life Cycle Assessment (LCA) tool designed to support th
 
 The tool aims to:
 
-- Evaluate the environmental impacts of heat and cooling supplied by DHC networks on a **life cycle thinking**
+- Evaluate the environmental impacts of heating and cooling supplied by DHC networks from a **life cycle perspective**
 - Ensure compliance with **EPBD (Energy Performance of Buildings Directive, version 4)** requirements
 - Support **standardized and automated** LCA calculations according to **EN 15804 + A2 and EN 50693**
 - Enable assessments **per technology** and **per life cycle module (from A to D) - from-creadle-to-creadle**
