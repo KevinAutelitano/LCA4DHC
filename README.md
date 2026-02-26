@@ -171,7 +171,7 @@ This tool is based on the following peer-reviewed publications:
 
 If you use this tool in academic work, please cite it as:
 
-> Autelitano, K., & Famiglietti, J. (2026). *LCA Tool for District Heating Networks*. Zenodo. https://doi.org/10.5281/zenodo.xxxxxx
+> Autelitano, K., & Famiglietti, J. (2026). *LCA Tool for District Heating Networks*. Zenodo. https://doi.org/10.5281/zenodo.18302949
 
 ---
 
